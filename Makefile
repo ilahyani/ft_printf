@@ -1,7 +1,17 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/12/18 17:05:03 by ilahyani          #+#    #+#              #
+#    Updated: 2021/12/18 17:14:39 by ilahyani         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 SRCS        =   ft_printf.c\
                 ft_printf_utils.c
-
-HDR = ./ft_printf.h
 
 OBJS		= 	$(SRCS:.c=.o)
 
@@ -11,24 +21,15 @@ CC 			=	gcc
 
 CFLAGS		= 	-Wall -Wextra -Werror
 
-BONUS		= 	bonus
-
-RM			= 	rm -f
+RM			= 	rm -rf
 
 $(NAME):	$(OBJS)
 			ar rcs $(NAME) $(OBJS)
 
-
 all:		$(NAME)
 
-$(BONUS):	$(OBJS) $(BNS_OBJS)
-			ar rcs $(NAME) $(OBJS) $(BNS_OBJS)
-
-%.o: %.c $(HDR)
-	$(CC) $(CFLAGS) -c $< -o $@
-
-clean:
-			$(RM) $(OBJS) $(BNS_OBJS)
+clean:		
+			$(RM) $(OBJS)
 
 fclean:		clean
 			$(RM) $(NAME)

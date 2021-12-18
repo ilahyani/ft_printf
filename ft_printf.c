@@ -6,7 +6,7 @@
 /*   By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 12:14:59 by ilahyani          #+#    #+#             */
-/*   Updated: 2021/12/18 15:32:51 by ilahyani         ###   ########.fr       */
+/*   Updated: 2021/12/18 17:48:48 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	checkflag(int *len, int i, char *s, va_list list)
 		ft_hex(va_arg(list, unsigned int), len);
 	else if (s[i] == 'X')
 		ft_uhex(va_arg(list, unsigned int), len);
-	else if (s[i] == '%')
+	else
 		ft_putchar(s[i], len);
 }
 
@@ -57,11 +57,14 @@ int	ft_printf(const char *s, ...)
 		if (s[i] == '%')
 		{
 			i++;
-			checkflag(&len, i, tmp, list);
+			if (s[i])
+			{
+				checkflag(&len, i, tmp, list);
+				i++;
+			}
 		}
 		else
-			ft_putchar(s[i], &len);
-		i++;
+			ft_putchar(s[i++], &len);
 	}
 	va_end(list);
 	return (len);
