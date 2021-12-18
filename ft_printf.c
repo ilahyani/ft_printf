@@ -6,7 +6,7 @@
 /*   By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 12:14:59 by ilahyani          #+#    #+#             */
-/*   Updated: 2021/12/18 17:48:48 by ilahyani         ###   ########.fr       */
+/*   Updated: 2021/12/18 17:54:41 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	checkflag(int *len, int i, char *s, va_list list)
 		ft_hex(va_arg(list, unsigned int), len);
 	else if (s[i] == 'X')
 		ft_uhex(va_arg(list, unsigned int), len);
-	else
+	else if (s[i] == '%')
 		ft_putchar(s[i], len);
 }
 
